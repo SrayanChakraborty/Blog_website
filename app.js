@@ -48,6 +48,8 @@ app.get("/posts/:postName",(req,res)=>{
   });
 })
 
+app.send("my name is srayan")
+
 
 
 
