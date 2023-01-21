@@ -54,17 +54,17 @@ app.post("/compose", (req, res) => {
   
   
 });
-// app.get("/posts/:postName",(req,res)=>{
-//   const requestedtitle= _.lowerCase(req.params.postName);
-//   posts.forEach(function (post){
-//     const storedtitle=_.lowerCase(post.title);
-//     if(storedtitle===requestedtitle){
-//       res.render('post',{title:post.title, body:post.body});
-
-//     }
-    
-//   });
-// })
+app.get("/posts/:postName",(req,res)=>{
+  const requestedtitle= req.params.postName;
+  Post.findOne({title:requestedtitle},(err,founditem)=>{
+    if(!err){
+      res.render('post',{title:founditem.title,body:founditem.content});
+    }
+    else{
+      res.send('<h1> 404 NOT FOUND </h1>');
+    }
+  });
+});
 
 
 
